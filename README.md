@@ -2,11 +2,11 @@
 
 Support my channel:  <a href="https://www.buymeacoffee.com/outofai" target="_blank" ><img src="https://img.shields.io/badge/-buy_me_a%C2%A0coffee-red?logo=buy-me-a-coffee" align="center" alt="Buy Me A Coffee"></a>
 
-This repository facilitates the creation of Python wheel files (.whl) from the [tiny-cuda-nn project](https://github.com/NVlabs/tiny-cuda-nn) to streamline the installation process on Google Colab.
+This repository facilitates the creation of Python wheel files (.whl) from the [tiny-cuda-nn project](https://github.com/NVlabs/tiny-cuda-nn) to streamline the installation process on Google Colab. This is to circumvent the 20 minutes build requirement for tiny-cuda-nn on Google colab when done from the source to reduce it to few seconds!
 
 _(All relevant credits and licenses are attributed to Nvidia. The materials and software licenses from the original tiny-cuda-nn repository are not included in this repository. Please refer to the original project for licensing details.)_
 
-Google Colab Usage:
+#Google Colab Usage:
 
 For T4 GPU
 ```
