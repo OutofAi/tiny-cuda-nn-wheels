@@ -6,7 +6,7 @@ This repository facilitates the creation of Python wheel files (.whl) from the [
 
 _(All relevant credits and licenses are attributed to Nvidia. The materials and software licenses from the original tiny-cuda-nn repository are not included in this repository. Please refer to the original project for licensing details.)_
 
-#Google Colab Usage:
+# Google Colab Usage:
 
 For T4 GPU
 ```
