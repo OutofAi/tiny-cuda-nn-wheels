@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 env:
-  TINY_CUDA_NN_VERSION: "1.7"
+  TINY_CUDA_NN_VERSION: "1.7.0"
 
 jobs:
   
@@ -41,12 +41,15 @@ jobs:
         include:
           - os: ubuntu-22.04
             cuda: nvidia/cuda:12.1.0-devel-ubuntu22.04
+            cudaversion: 121
             arch: 75 # for T4 on google colab
           - os: ubuntu-22.04
             cuda: nvidia/cuda:12.1.0-devel-ubuntu22.04
+            cudaversion: 121
             arch: 70 # for v100 on google colab
           - os: ubuntu-22.04
             cuda: nvidia/cuda:12.1.0-devel-ubuntu22.04
+            cudaversion: 121
             arch: 89 # for a100 on google colab
     env:
       build_dir: "build"
@@ -91,7 +94,7 @@ jobs:
           cd bindings/torch/dist
           for filename in *; do
             # Rename the file by inserting .post${{ matrix.arch }} directly after "1.7"
-            new_filename=$(echo "$filename" | sed "s/1.7/1.7.post${{ matrix.arch }}/")
+            new_filename=$(echo "$filename" | sed "s/1.7/1.7+arch${{ matrix.arch }}+cuda${{ matrix.cudaversion }}/")
             mv "$filename" "$new_filename"
             echo "Uploading $new_filename"
             gh release upload ${{ env.TINY_CUDA_NN_VERSION }} "$new_filename" --clobber --repo ${{ github.repository }}
