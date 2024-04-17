@@ -10,21 +10,21 @@ Google Colab Usage:
 
 For T4 GPU
 ```
-!curl -L "https://github.com/tiny-cuda-nn-wheels/tiny-cuda-nn-wheels/releases/download/1.7/tinycudann-1.7.post75-cp310-cp310-linux_x86_64.whl" -o tinycudann-1.7.post75-cp310-cp310-linux_x86_64.whl
+!curl -L "https://github.com/OutofAi/tiny-cuda-nn-wheels/releases/download/1.7/tinycudann-1.7.post75-cp310-cp310-linux_x86_64.whl" -o tinycudann-1.7.post75-cp310-cp310-linux_x86_64.whl
 !pip install tinycudann-1.7.post75-cp310-cp310-linux_x86_64.whl
 import tinycudann as tcnn
 ```
 
 For V100 GPU
 ```
-!curl -L "https://github.com/tiny-cuda-nn-wheels/tiny-cuda-nn-wheels/releases/download/1.7/tinycudann-1.7.post70-cp310-cp310-linux_x86_64.whl" -o tinycudann-1.7.post70-cp310-cp310-linux_x86_64.whl
+!curl -L "https://github.com/OutofAi/tiny-cuda-nn-wheels/releases/download/1.7/tinycudann-1.7.post70-cp310-cp310-linux_x86_64.whl" -o tinycudann-1.7.post70-cp310-cp310-linux_x86_64.whl
 !pip install tinycudann-1.7.post70-cp310-cp310-linux_x86_64.whl
 import tinycudann as tcnn
 ```
 
 For A100 GPU
 ```
-!curl -L "https://github.com/tiny-cuda-nn-wheels/tiny-cuda-nn-wheels/releases/download/1.7/tinycudann-1.7.post89-cp310-cp310-linux_x86_64.whl" -o tinycudann-1.7.post89-cp310-cp310-linux_x86_64.whl
+!curl -L "https://github.com/OutofAi/tiny-cuda-nn-wheels/releases/download/1.7/tinycudann-1.7.post89-cp310-cp310-linux_x86_64.whl" -o tinycudann-1.7.post89-cp310-cp310-linux_x86_64.whl
 !pip install tinycudann-1.7.post89-cp310-cp310-linux_x86_64.whl
 import tinycudann as tcnn
 ```
