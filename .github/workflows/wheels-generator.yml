@@ -40,25 +40,25 @@ jobs:
           - os: windows-2019
             visual_studio: "Visual Studio 16 2019"
             python-version: '3.10'
-            torch-version: '2.2.1'
+            torch-version: '2.2.2'
             cuda-version: "12.1"
             arch: 89
           - os: windows-2019
             visual_studio: "Visual Studio 16 2019"
             python-version: '3.10'
-            torch-version: '2.2.1'
+            torch-version: '2.2.2'
             cuda-version: "12.1"
             arch: 75
           - os: windows-2019
             visual_studio: "Visual Studio 16 2019"
             python-version: '3.10'
-            torch-version: '2.2.1'
+            torch-version: '2.2.2'
             cuda-version: "12.1"
             arch: 70
           - os: windows-2019
             visual_studio: "Visual Studio 16 2019"
             python-version: '3.10'
-            torch-version: '2.2.1'
+            torch-version: '2.2.2'
             cuda-version: "12.1"
             arch: 61
 
@@ -165,17 +165,17 @@ jobs:
           - os: ubuntu-22.04
             cuda: nvidia/cuda:12.1.0-devel-ubuntu22.04
             cudaversion: 121
-            torchversion: 221
+            torchversion: 222
             arch: 75 # for T4 on google colab
           - os: ubuntu-22.04
             cuda: nvidia/cuda:12.1.0-devel-ubuntu22.04
             cudaversion: 121
-            torchversion: 221
+            torchversion: 222
             arch: 70 # for v100 on google colab
           - os: ubuntu-22.04
             cuda: nvidia/cuda:12.1.0-devel-ubuntu22.04
             cudaversion: 121
-            torchversion: 221
+            torchversion: 222
             arch: 89 # for a100 on google colab
     env:
       build_dir: "build"
@@ -207,7 +207,7 @@ jobs:
           pip install setuptools wheel
       - name: Install Pytorch
         run: |
-          pip3 install torch==2.2.1 torchvision==0.17.1 torchaudio==2.2.1 --index-url https://download.pytorch.org/whl/cu121
+          pip3 install torch==2.2.2 --index-url https://download.pytorch.org/whl/cu121
 
       - name: Generate Wheels
         run: |
