@@ -142,7 +142,7 @@ jobs:
         $CUDA_VERSION_NO_DOT = $CUDA_VERSION -replace '\.', ''
         cd bindings/torch/dist
         Get-ChildItem -Name | ForEach-Object {
-          $new_filename = $_ -replace '1.7', "1.7+arch${{ matrix.arch }}+cu$CUDA_VERSION_NO_DOT"
+          $new_filename = $_ -replace '1.7', "1.7+arch${{ matrix.arch }}+cuda$CUDA_VERSION_NO_DOT"
           Rename-Item -Path $_ -NewName $new_filename
           echo "Uploading $new_filename"
           gh release upload ${{ env.TINY_CUDA_NN_VERSION }} "$new_filename" --clobber --repo ${{ github.repository }}
