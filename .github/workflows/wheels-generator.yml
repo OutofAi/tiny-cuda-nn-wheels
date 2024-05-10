@@ -191,15 +191,9 @@ jobs:
         run: |
           apt-get update
           apt-get install -y git python3 python3-pip
-      - name: Install software-properties-common
-        run: |
-          apt-get update
-          apt-get install -y software-properties-common
                 
       - name: Install GitHub CLI
         run: |
-          apt-key adv --keyserver keyserver.ubuntu.com --recv-key C99B11DEB97541F0
-          apt-add-repository https://cli.github.com/packages
           apt-get update
           apt-get install -y gh
           
