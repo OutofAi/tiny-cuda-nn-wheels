@@ -162,26 +162,26 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: ubuntu-22.04
-            cuda: nvidia/cuda:12.1.0-devel-ubuntu22.04
+          - os: ubuntu-20.04
+            cuda: nvidia/cuda:12.1.0-devel-ubuntu20.04
             cudaversion: 121
             torchversion: 212
             arch: 60 # for P100 on Kaggle
-          # - os: ubuntu-22.04
-          #   cuda: nvidia/cuda:12.1.0-devel-ubuntu22.04
-          #   cudaversion: 121
-          #   torchversion: 212
-          #   arch: 75 # for T4 on google colab
-          # - os: ubuntu-22.04
-          #   cuda: nvidia/cuda:12.1.0-devel-ubuntu22.04
-          #   cudaversion: 121
-          #   torchversion: 212
-          #   arch: 70 # for v100 on google colab
-          # - os: ubuntu-22.04
-          #   cuda: nvidia/cuda:12.1.0-devel-ubuntu22.04
-          #   cudaversion: 121
-          #   torchversion: 212
-          #   arch: 89 # for a100 on google colab
+          - os: ubuntu-20.04
+            cuda: nvidia/cuda:12.1.0-devel-ubuntu20.04
+            cudaversion: 121
+            torchversion: 212
+            arch: 75 # for T4 on google colab
+          - os: ubuntu-20.04
+            cuda: nvidia/cuda:12.1.0-devel-ubuntu20.04
+            cudaversion: 121
+            torchversion: 212
+            arch: 70 # for v100 on google colab
+          - os: ubuntu-20.04
+            cuda: nvidia/cuda:12.1.0-devel-ubuntu20.04
+            cudaversion: 121
+            torchversion: 212
+            arch: 89 # for a100 on google colab
     env:
       build_dir: "build"
       config: "Release"
