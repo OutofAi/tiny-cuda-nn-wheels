@@ -30,128 +30,128 @@ jobs:
   #         draft: false
   #         prerelease: false
 
-  build_windows:
-    #needs: build-tag
-    name: Build on Windows
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        include:
-          - os: windows-2019
-            visual_studio: "Visual Studio 16 2019"
-            python-version: '3.10'
-            torch-version: '2.2.2'
-            cuda-version: "12.1"
-            arch: 89
-          - os: windows-2019
-            visual_studio: "Visual Studio 16 2019"
-            python-version: '3.10'
-            torch-version: '2.2.2'
-            cuda-version: "12.1"
-            arch: 75
-          - os: windows-2019
-            visual_studio: "Visual Studio 16 2019"
-            python-version: '3.10'
-            torch-version: '2.2.2'
-            cuda-version: "12.1"
-            arch: 70
-          - os: windows-2019
-            visual_studio: "Visual Studio 16 2019"
-            python-version: '3.10'
-            torch-version: '2.2.2'
-            cuda-version: "12.1"
-            arch: 61
+  # build_windows:
+  #   #needs: build-tag
+  #   name: Build on Windows
+  #   runs-on: ${{ matrix.os }}
+  #   strategy:
+  #     matrix:
+  #       include:
+  #         - os: windows-2019
+  #           visual_studio: "Visual Studio 16 2019"
+  #           python-version: '3.10'
+  #           torch-version: '2.2.2'
+  #           cuda-version: "12.1"
+  #           arch: 89
+  #         - os: windows-2019
+  #           visual_studio: "Visual Studio 16 2019"
+  #           python-version: '3.10'
+  #           torch-version: '2.2.2'
+  #           cuda-version: "12.1"
+  #           arch: 75
+  #         - os: windows-2019
+  #           visual_studio: "Visual Studio 16 2019"
+  #           python-version: '3.10'
+  #           torch-version: '2.2.2'
+  #           cuda-version: "12.1"
+  #           arch: 70
+  #         - os: windows-2019
+  #           visual_studio: "Visual Studio 16 2019"
+  #           python-version: '3.10'
+  #           torch-version: '2.2.2'
+  #           cuda-version: "12.1"
+  #           arch: 61
 
-    env:
-      build_dir: "build"
-      config: "Release"
-      TCNN_CUDA_ARCHITECTURES: ${{ matrix.arch }}
-    steps:
-    - uses: actions/checkout@v3
-      with:
-        repository: 'NVlabs/tiny-cuda-nn'
-        submodules: 'recursive'
-        token: ${{ secrets.GITHUB_TOKEN }}
-    - name: Set up Python ${{ matrix.python-version }}
-      uses: actions/setup-python@v2
-      with:
-        python-version: ${{ matrix.python-version }}
+  #   env:
+  #     build_dir: "build"
+  #     config: "Release"
+  #     TCNN_CUDA_ARCHITECTURES: ${{ matrix.arch }}
+  #   steps:
+  #   - uses: actions/checkout@v3
+  #     with:
+  #       repository: 'NVlabs/tiny-cuda-nn'
+  #       submodules: 'recursive'
+  #       token: ${{ secrets.GITHUB_TOKEN }}
+  #   - name: Set up Python ${{ matrix.python-version }}
+  #     uses: actions/setup-python@v2
+  #     with:
+  #       python-version: ${{ matrix.python-version }}
 
 
-    - name: List Visual Studio installations
-      run: |
-        & "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" -products * -legacy -format text
-    - name: Install Wheel
-      run:
-        pip3 install setuptools wheel
+  #   - name: List Visual Studio installations
+  #     run: |
+  #       & "C:\Program Files (x86)\Microsoft Visual Studio\Installer\vswhere.exe" -products * -legacy -format text
+  #   - name: Install Wheel
+  #     run:
+  #       pip3 install setuptools wheel
       
-    - name: Install Torch + Cuda ${{ matrix.cuda-version }}
-      run: |
-        $CUDA_VERSION="${{ matrix.cuda-version }}"
-        $CUDA_VERSION_NO_DOT=$CUDA_VERSION -replace '\.', ''
-        pip3 install torch==${{ matrix.torch-version }} --index-url https://download.pytorch.org/whl/cu$CUDA_VERSION_NO_DOT
-        pip3 install numpy
-        python3 --version
+  #   - name: Install Torch + Cuda ${{ matrix.cuda-version }}
+  #     run: |
+  #       $CUDA_VERSION="${{ matrix.cuda-version }}"
+  #       $CUDA_VERSION_NO_DOT=$CUDA_VERSION -replace '\.', ''
+  #       pip3 install torch==${{ matrix.torch-version }} --index-url https://download.pytorch.org/whl/cu$CUDA_VERSION_NO_DOT
+  #       pip3 install numpy
+  #       python3 --version
  
-    - name: Download and Extract CUDA Toolkit ${{ matrix.cuda-version }}
-      run: |
-        if ("${{ matrix.cuda-version }}" -eq "12.1") {
-          choco install cuda --version=12.2.0.53625
-        } else {
-          choco install cuda --version=11.8.0.52206
-        }
-    - name: Find CUDA Toolkit path
-      run: |
-        $env:CUDART_PATH= "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v${{ matrix.cuda-version }}\bin"
-        $env:CUDART_HOME= "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v${{ matrix.cuda-version }}\bin"
+  #   - name: Download and Extract CUDA Toolkit ${{ matrix.cuda-version }}
+  #     run: |
+  #       if ("${{ matrix.cuda-version }}" -eq "12.1") {
+  #         choco install cuda --version=12.2.0.53625
+  #       } else {
+  #         choco install cuda --version=11.8.0.52206
+  #       }
+  #   - name: Find CUDA Toolkit path
+  #     run: |
+  #       $env:CUDART_PATH= "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v${{ matrix.cuda-version }}\bin"
+  #       $env:CUDART_HOME= "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v${{ matrix.cuda-version }}\bin"
         
-    - name: Create NVCC and MSVC Wrappers
-      run: |
-        # Create a directory for wrappers
-        mkdir $env:RUNNER_TEMP\wrappers
-        $nvccWrapper = @"
-        @echo off
-        "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\bin\nvcc.exe" -std=c++17 %*
-        "@
-        $clWrapper = @"
-        @echo off
-        "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\bin\HostX86\x64\cl.exe" /std:c++17 %*
-        "@
-        Set-Content -Path "$env:RUNNER_TEMP\wrappers\nvcc.bat" -Value $nvccWrapper
-        Set-Content -Path "$env:RUNNER_TEMP\wrappers\cl.bat" -Value $clWrapper
-    - name: Adjust PATH to Include CUDA and Wrappers
-      run: |
-        $cudaPath = "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\bin"
-        echo "PATH=$env:RUNNER_TEMP\wrappers;$cudaPath;$env:PATH" >> $env:GITHUB_ENV
-      shell: pwsh
+  #   - name: Create NVCC and MSVC Wrappers
+  #     run: |
+  #       # Create a directory for wrappers
+  #       mkdir $env:RUNNER_TEMP\wrappers
+  #       $nvccWrapper = @"
+  #       @echo off
+  #       "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\bin\nvcc.exe" -std=c++17 %*
+  #       "@
+  #       $clWrapper = @"
+  #       @echo off
+  #       "C:\Program Files (x86)\Microsoft Visual Studio\2019\Enterprise\VC\Tools\MSVC\14.29.30133\bin\HostX86\x64\cl.exe" /std:c++17 %*
+  #       "@
+  #       Set-Content -Path "$env:RUNNER_TEMP\wrappers\nvcc.bat" -Value $nvccWrapper
+  #       Set-Content -Path "$env:RUNNER_TEMP\wrappers\cl.bat" -Value $clWrapper
+  #   - name: Adjust PATH to Include CUDA and Wrappers
+  #     run: |
+  #       $cudaPath = "C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2\bin"
+  #       echo "PATH=$env:RUNNER_TEMP\wrappers;$cudaPath;$env:PATH" >> $env:GITHUB_ENV
+  #     shell: pwsh
     
-    - name: Set CUDA_HOME
-      run: echo "CUDA_HOME=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2" >> $env:GITHUB_ENV
-      shell: pwsh
+  #   - name: Set CUDA_HOME
+  #     run: echo "CUDA_HOME=C:\Program Files\NVIDIA GPU Computing Toolkit\CUDA\v12.2" >> $env:GITHUB_ENV
+  #     shell: pwsh
 
 
-    - name: Generate latest Wheels
-      run: |
-        cd bindings/torch
-        python3 setup.py bdist_wheel --plat-name win_amd64  # Build the wheel
-      shell: pwsh  # Ensure PowerShell is used on Windows
+  #   - name: Generate latest Wheels
+  #     run: |
+  #       cd bindings/torch
+  #       python3 setup.py bdist_wheel --plat-name win_amd64  # Build the wheel
+  #     shell: pwsh  # Ensure PowerShell is used on Windows
           
-    - name: Upload assets
-      run: |
-        $CUDA_VERSION="${{ matrix.cuda-version }}"
-        $CUDA_VERSION_NO_DOT = $CUDA_VERSION -replace '\.', ''
-        $TORCH_VERSION="${{ matrix.torch-version }}"
-        $TORCH_VERSION_NO_DOT = $TORCH_VERSION -replace '\.', ''
-        cd bindings/torch/dist
-        Get-ChildItem -Name | ForEach-Object {
-          $new_filename = $_ -replace '1.7', "1.7+arch${{ matrix.arch }}+torch$TORCH_VERSION_NO_DOT+cuda$CUDA_VERSION_NO_DOT"
-          Rename-Item -Path $_ -NewName $new_filename
-          echo "Uploading $new_filename"
-          gh release upload ${{ env.TINY_CUDA_NN_VERSION }} "$new_filename" --clobber --repo ${{ github.repository }}
-        }
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      shell: pwsh
+  #   - name: Upload assets
+  #     run: |
+  #       $CUDA_VERSION="${{ matrix.cuda-version }}"
+  #       $CUDA_VERSION_NO_DOT = $CUDA_VERSION -replace '\.', ''
+  #       $TORCH_VERSION="${{ matrix.torch-version }}"
+  #       $TORCH_VERSION_NO_DOT = $TORCH_VERSION -replace '\.', ''
+  #       cd bindings/torch/dist
+  #       Get-ChildItem -Name | ForEach-Object {
+  #         $new_filename = $_ -replace '1.7', "1.7+arch${{ matrix.arch }}+torch$TORCH_VERSION_NO_DOT+cuda$CUDA_VERSION_NO_DOT"
+  #         Rename-Item -Path $_ -NewName $new_filename
+  #         echo "Uploading $new_filename"
+  #         gh release upload ${{ env.TINY_CUDA_NN_VERSION }} "$new_filename" --clobber --repo ${{ github.repository }}
+  #       }
+  #     env:
+  #       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  #     shell: pwsh
 
   build_linux:
     #needs: build-tag
@@ -165,17 +165,17 @@ jobs:
           - os: ubuntu-22.04
             cuda: nvidia/cuda:12.1.0-devel-ubuntu22.04
             cudaversion: 121
-            torchversion: 222
+            torchversion: 212
             arch: 75 # for T4 on google colab
           - os: ubuntu-22.04
             cuda: nvidia/cuda:12.1.0-devel-ubuntu22.04
             cudaversion: 121
-            torchversion: 222
+            torchversion: 212
             arch: 70 # for v100 on google colab
           - os: ubuntu-22.04
             cuda: nvidia/cuda:12.1.0-devel-ubuntu22.04
             cudaversion: 121
-            torchversion: 222
+            torchversion: 212
             arch: 89 # for a100 on google colab
     env:
       build_dir: "build"
@@ -207,7 +207,7 @@ jobs:
           pip install setuptools wheel
       - name: Install Pytorch
         run: |
-          pip3 install torch==2.2.2 --index-url https://download.pytorch.org/whl/cu121
+          pip3 install torch==2.1.2 --index-url https://download.pytorch.org/whl/cu121
 
       - name: Generate Wheels
         run: |
