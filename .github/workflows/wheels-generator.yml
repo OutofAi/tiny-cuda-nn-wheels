@@ -162,17 +162,17 @@ jobs:
     strategy:
       matrix:
         include:
-          - os: ubuntu-20.04
+          - os: ubuntu-22.04
             cuda: nvidia/cuda:12.1.0-devel-ubuntu20.04
             cudaversion: 121
             torchversion: 212
             arch: 60 # for P100 on Kaggle
-          - os: ubuntu-20.04
+          - os: ubuntu-22.04
             cuda: nvidia/cuda:12.1.0-devel-ubuntu20.04
             cudaversion: 121
             torchversion: 212
             arch: 75 # for T4 on google colab
-          - os: ubuntu-20.04
+          - os: ubuntu-22.04
             cuda: nvidia/cuda:12.1.0-devel-ubuntu20.04
             cudaversion: 121
             torchversion: 212
