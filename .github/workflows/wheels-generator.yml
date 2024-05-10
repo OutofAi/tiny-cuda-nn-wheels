@@ -199,6 +199,7 @@ jobs:
           add-apt-repository ppa:deadsnakes/ppa
           DEBIAN_FRONTEND=noninteractive apt-get update
           DEBIAN_FRONTEND=noninteractive apt-get install -y git python3.10 python3.10-distutils python3-pip
+          rm -f /usr/bin/python3
           ln -s /usr/bin/python3.10 /usr/bin/python3
         env:
           DEBIAN_FRONTEND: noninteractive
