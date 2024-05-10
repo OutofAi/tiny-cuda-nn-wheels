@@ -195,10 +195,9 @@ jobs:
       - name: Install Git and Python 3.10
         run: |
           apt-get update
-          apt-get install -y git pyenv
-          pyenv install 3.10.0
-          pyenv global 3.10.0
-          python --version
+          apt-get install -y git python3.10 python3.10-pip
+          update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.10 1
+          python3 --version
           
       - name: Install GitHub CLI
         run: |
