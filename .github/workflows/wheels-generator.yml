@@ -230,13 +230,16 @@ jobs:
           conda activate myenv
           python --version
           pip install setuptools wheel
+        shell: bash
+          
       - name: Install Pytorch
         run: |
           source $HOME/miniconda/etc/profile.d/conda.sh
           conda activate myenv
           python --version
           pip3 install torch==2.1.2 --index-url https://download.pytorch.org/whl/cu121
-
+        shell: bash
+          
       - name: Generate Wheels
         run: |
           source $HOME/miniconda/etc/profile.d/conda.sh
@@ -244,6 +247,8 @@ jobs:
           python --version
           cd bindings/torch
           python3 setup.py bdist_wheel --plat-name linux_x86_64
+        shell: bash
+          
         env:
           INCLUDE_ARCH: ${{ matrix.arch }} 
       - name: Upload assets
