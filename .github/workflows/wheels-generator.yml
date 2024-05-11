@@ -187,10 +187,10 @@ jobs:
       config: "Release"
       TCNN_CUDA_ARCHITECTURES: ${{ matrix.arch }}
     steps:
-      - name: Install Git and Python
-        run: |
-          apt-get update
-          apt-get install -y git python3 python3-pip
+      # - name: Install Git and Python
+      #   run: |
+      #     apt-get update
+      #     apt-get install -y git python3 python3-pip
 
           
       - name: Install GitHub CLI
@@ -200,6 +200,18 @@ jobs:
           echo "deb [arch=$(dpkg --print-architecture) signed-by=/usr/share/keyrings/githubcli-archive-keyring.gpg] https://cli.github.com/packages stable main" | tee /etc/apt/sources.list.d/github-cli.list > /dev/null
           apt-get update
           apt-get install -y gh
+
+      - name: Install Miniconda
+        run: |
+          curl -L https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh -o miniconda.sh
+          bash miniconda.sh -b -p $HOME/miniconda
+          echo "$HOME/miniconda/bin" >> $GITHUB_PATH
+          
+      - name: Create and use a Conda environment
+        run: |
+          source $HOME/miniconda/etc/profile.d/conda.sh
+          conda create -n myenv python=3.10 -y
+          conda activate myenv
           
       - uses: actions/checkout@v3
         with:
@@ -213,13 +225,22 @@ jobs:
 
       - name: Install Wheel  
         run:
+          source $HOME/miniconda/etc/profile.d/conda.sh
+          conda activate myenv
+          python --version
           pip install setuptools wheel
       - name: Install Pytorch
         run: |
+          source $HOME/miniconda/etc/profile.d/conda.sh
+          conda activate myenv
+          python --version
           pip3 install torch==2.1.2 --index-url https://download.pytorch.org/whl/cu121
 
       - name: Generate Wheels
         run: |
+          source $HOME/miniconda/etc/profile.d/conda.sh
+          conda activate myenv
+          python --version
           cd bindings/torch
           python3 setup.py bdist_wheel --plat-name linux_x86_64
         env:
