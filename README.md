@@ -33,3 +33,20 @@ For A100 GPU and L4 GPU
 !pip install tinycudann-1.7+arch89+torch221+cuda121-cp310-cp310-linux_x86_64.whl --force-reinstall
 import tinycudann as tcnn
 ```
+
+# Kaggle Notebook Usage:
+
+For T4 GPU
+```
+!curl -L "https://github.com/OutofAi/tiny-cuda-nn-wheels/releases/download/Kaggle-T4/tinycudann-1.7-cp310-cp310-linux_x86_64.whl" -o tinycudann-1.7-cp310-cp310-linux_x86_64.whl
+!python -m pip install tinycudann-1.7-cp310-cp310-linux_x86_64.whl --force-reinstall --no-cache-dir
+import tinycudann as tcnn
+```
+
+
+For P100 GPU
+```
+!curl -L "https://github.com/OutofAi/tiny-cuda-nn-wheels/releases/download/Kaggle-P100/tinycudann-1.7-cp310-cp310-linux_x86_64.whl" -o tinycudann-1.7-cp310-cp310-linux_x86_64.whl
+!python -m pip install tinycudann-1.7-cp310-cp310-linux_x86_64.whl --force-reinstall --no-cache-dir
+import tinycudann as tcnn
+```
