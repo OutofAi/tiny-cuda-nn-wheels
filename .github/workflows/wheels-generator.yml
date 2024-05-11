@@ -208,6 +208,7 @@ jobs:
           source $HOME/miniconda/etc/profile.d/conda.sh
           conda create -n myenv python=3.10 -y
           conda activate myenv
+          conda install pytorch==2.1.2 torchvision==0.16.2 torchaudio==2.1.2 pytorch-cuda=12.1 -c pytorch -c nvidia
         shell: bash
           
       - uses: actions/checkout@v3
@@ -225,14 +226,6 @@ jobs:
           conda activate myenv
           python --version
           pip install setuptools wheel
-        shell: bash
-
-      - name: Install Pytorch
-        run: |
-          source $HOME/miniconda/etc/profile.d/conda.sh
-          conda activate myenv
-          python --version
-          pip install torch==2.1.2 --index-url https://download.pytorch.org/whl/cu121
         shell: bash
 
       - name: Generate Wheels
