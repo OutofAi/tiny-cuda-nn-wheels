@@ -7,7 +7,7 @@ This repository facilitates the creation of Python wheel files (.whl) from the [
 
 _(All relevant credits and licenses are attributed to Nvidia. The materials and software licenses from the original tiny-cuda-nn repository are not included in this repository. Please refer to the original project for licensing details.)_
 
-The current format for the wheel names includes a release postfix that signifies the compute compatibility of the relevant graphics card (i.e. compute compatibility of 8.6 is +arch86), for simplcity you can use the code below for Google Colab for the relevant GPU model, but if you want to run it locally on your machine you can always identify the compute compatibility thorugh this page based of your graphics card https://developer.nvidia.com/cuda-gpus
+The current format for the wheel names includes a release postfix that signifies the compute compatibility of the relevant graphics card (i.e. compute compatibility of 8.6 is .post86), for simplcity you can use the code below for Google Colab for the relevant GPU model, but if you want to run it locally on your machine you can always identify the compute compatibility thorugh this page based of your graphics card https://developer.nvidia.com/cuda-gpus
 
 It also uses a release postfix for cuda and torch .post{arch-type}{cuda-version}{torch-version} that signifies the torch and cuda compatibility.
 
