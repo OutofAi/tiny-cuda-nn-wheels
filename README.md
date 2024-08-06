@@ -20,13 +20,6 @@ For T4 GPU
 import tinycudann as tcnn
 ```
 
-For V100 GPU
-```
-!curl -L "https://github.com/OutofAi/tiny-cuda-nn-wheels/releases/download/1.7.1/tinycudann-1.7+arch70+torch231+cuda121-cp310-cp310-linux_x86_64.whl" -o tinycudann-1.7+arch70+torch231+cuda121-cp310-cp310-linux_x86_64.whl
-!pip install tinycudann-1.7+arch70+torch231+cuda121-cp310-cp310-linux_x86_64.whl --force-reinstall
-import tinycudann as tcnn
-```
-
 For A100 GPU and L4 GPU
 ```
 !curl -L "https://github.com/OutofAi/tiny-cuda-nn-wheels/releases/download/1.7.1/tinycudann-1.7+arch89+torch231+cuda121-cp310-cp310-linux_x86_64.whl" -o tinycudann-1.7+arch89+torch231+cuda121-cp310-cp310-linux_x86_64.whl
