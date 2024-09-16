@@ -83,13 +83,12 @@ jobs:
           pip3 install torch==2.4.0 --index-url https://download.pytorch.org/whl/cu121
       - name: Generate Wheels
         run: |
-          cd pytorch3d
           python3 setup.py bdist_wheel --plat-name linux_x86_64
         env:
           INCLUDE_ARCH: ${{ matrix.arch }} 
       - name: Upload assets
         run: |
-          cd pytorch3d/dist
+          cd dist
           for filename in *; do
             # Rename the file by inserting .post${{ matrix.arch }} directly after "1.7"
             new_filename=$(echo "$filename" | sed "s/1.7/1.7.post${{ matrix.arch }}${{ matrix.torchversion }}${{ matrix.cudaversion }}/")
