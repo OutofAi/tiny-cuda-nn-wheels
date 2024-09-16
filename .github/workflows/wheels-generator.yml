@@ -40,17 +40,7 @@ jobs:
             cuda: nvidia/cuda:12.1.0-devel-ubuntu22.04
             cudaversion: 121
             torchversion: 240
-            arch: 75 # for T4 on google colab
-          - os: ubuntu-22.04
-            cuda: nvidia/cuda:12.1.0-devel-ubuntu22.04
-            cudaversion: 121
-            torchversion: 240
-            arch: 70 # for v100 on google colab
-          - os: ubuntu-22.04
-            cuda: nvidia/cuda:12.1.0-devel-ubuntu22.04
-            cudaversion: 121
-            torchversion: 240
-            arch: 89 # for a100 on google colab
+            arch: 'Ada' # for a100 on google colab
     env:
       build_dir: "build"
       config: "Release"
