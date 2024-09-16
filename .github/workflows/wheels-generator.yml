@@ -86,6 +86,7 @@ jobs:
           python3 setup.py bdist_wheel --plat-name linux_x86_64
         env:
           INCLUDE_ARCH: ${{ matrix.arch }} 
+          FORCE_CUDA: 1
       - name: Upload assets
         run: |
           cd dist
