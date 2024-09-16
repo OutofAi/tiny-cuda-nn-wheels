@@ -40,7 +40,12 @@ jobs:
             cuda: nvidia/cuda:12.1.0-devel-ubuntu22.04
             cudaversion: 121
             torchversion: 240
-            arch: 'Ada' # for a100 on google colab
+            arch: 'Ampere' # for a100 on google colab
+          - os: ubuntu-22.04
+            cuda: nvidia/cuda:12.1.0-devel-ubuntu22.04
+            cudaversion: 121
+            torchversion: 240
+            arch: 'Ada' 
     env:
       build_dir: "build"
       config: "Release"
