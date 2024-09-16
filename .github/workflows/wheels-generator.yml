@@ -90,8 +90,8 @@ jobs:
         run: |
           cd dist
           for filename in *; do
-            # Rename the file by inserting .post${{ matrix.arch }} directly after "1.7"
-            new_filename=$(echo "$filename" | sed "s/1.7/1.7.post${{ matrix.arch }}${{ matrix.torchversion }}${{ matrix.cudaversion }}/")
+            # Rename the file by inserting .post${{ matrix.arch }} directly after "0.7.8"
+            new_filename=$(echo "$filename" | sed "s/0.7.8/0.7.8.post${{ matrix.arch }}${{ matrix.torchversion }}${{ matrix.cudaversion }}/")
             mv "$filename" "$new_filename"
             echo "Uploading $new_filename"
             gh release upload ${{ env.TINY_CUDA_NN_VERSION }} "$new_filename" --clobber --repo ${{ github.repository }}
