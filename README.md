@@ -11,3 +11,11 @@ For L4 GPU
 import pytorch3d
 ```
 
+For A100 GPU
+```
+!curl -L "https://github.com/consequencesunintended/pytorch3D-wheels/releases/download/0.7.8/pytorch3d-0.7.8.postAmpere240121-cp310-cp310-linux_x86_64.whl" -o pytorch3d-0.7.8.post240121-cp310-cp310-linux_x86_64.whl
+!pip install pytorch3d-0.7.8.post240121-cp310-cp310-linux_x86_64.whl --force-reinstall
+import pytorch3d
+```
+
+
