@@ -2,15 +2,6 @@
 [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/cloudposse.svg?style=social&label=Ashleigh%20Watson)](https://twitter.com/OutofAi) 
 [![Twitter](https://img.shields.io/twitter/url/https/twitter.com/cloudposse.svg?style=social&label=Alex%20Nasa)](https://twitter.com/banterless_ai)
 
-
-This repository facilitates the creation of Python wheel files (.whl) from the [tiny-cuda-nn project](https://github.com/NVlabs/tiny-cuda-nn) to streamline the installation process on Google Colab and Kaggle. This is to circumvent the 20 minutes build requirement for tiny-cuda-nn on Google colab and Kaggle, when done from the source, to reduce it to few seconds!
-
-_(All relevant credits and licenses are attributed to Nvidia. The materials and software licenses from the original tiny-cuda-nn repository are not included in this repository. Please refer to the original project for licensing details.)_
-
-The current format for the wheel names includes a release postfix that signifies the compute compatibility of the relevant graphics card (i.e. compute compatibility of 8.6 is .post86), for simplcity you can use the code below for Google Colab for the relevant GPU model, but if you want to run it locally on your machine you can always identify the compute compatibility thorugh this page based of your graphics card https://developer.nvidia.com/cuda-gpus
-
-It also uses a release postfix for cuda and torch .post{arch-type}{cuda-version}{torch-version} that signifies the torch and cuda compatibility.
-
 # Google Colab Usage:
 
 For T4 GPU
@@ -27,19 +18,3 @@ For A100 GPU and L4 GPU
 import tinycudann as tcnn
 ```
 
-# Kaggle Notebook Usage:
-
-For T4 GPU
-```
-!curl -L "https://github.com/OutofAi/tiny-cuda-nn-wheels/releases/download/Kaggle-T4/tinycudann-1.7-cp310-cp310-linux_x86_64.whl" -o tinycudann-1.7-cp310-cp310-linux_x86_64.whl
-!python -m pip install tinycudann-1.7-cp310-cp310-linux_x86_64.whl --force-reinstall --no-cache-dir
-import tinycudann as tcnn
-```
-
-
-For P100 GPU
-```
-!curl -L "https://github.com/OutofAi/tiny-cuda-nn-wheels/releases/download/Kaggle-P100/tinycudann-1.7-cp310-cp310-linux_x86_64.whl" -o tinycudann-1.7-cp310-cp310-linux_x86_64.whl
-!python -m pip install tinycudann-1.7-cp310-cp310-linux_x86_64.whl --force-reinstall --no-cache-dir
-import tinycudann as tcnn
-```
