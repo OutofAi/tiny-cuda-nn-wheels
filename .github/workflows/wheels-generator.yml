@@ -87,6 +87,7 @@ jobs:
         env:
           INCLUDE_ARCH: ${{ matrix.arch }} 
           FORCE_CUDA: 1
+          TORCH_CUDA_ARCH_LIST : ${{ matrix.arch }} 
       - name: Upload assets
         run: |
           cd dist
