@@ -2,7 +2,7 @@ name: CI
 on:
   workflow_dispatch:
 env:
-  TINY_CUDA_NN_VERSION: "1.7.2"
+  PYTORCH_3D_VERSION: "0.7.8"
 jobs:
   
   build-tag:
@@ -22,8 +22,8 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN  }}
         with:
-          tag_name: ${{ env.TINY_CUDA_NN_VERSION }}
-          release_name: ${{ env.TINY_CUDA_NN_VERSION }}
+          tag_name: ${{ env.PYTORCH_3D_VERSION }}
+          release_name: ${{ env.PYTORCH_3D_VERSION }}
           draft: false
           prerelease: false
 
@@ -94,7 +94,7 @@ jobs:
             new_filename=$(echo "$filename" | sed "s/0.7.8/0.7.8.post${{ matrix.arch }}${{ matrix.torchversion }}${{ matrix.cudaversion }}/")
             mv "$filename" "$new_filename"
             echo "Uploading $new_filename"
-            gh release upload ${{ env.TINY_CUDA_NN_VERSION }} "$new_filename" --clobber --repo ${{ github.repository }}
+            gh release upload ${{ env.PYTORCH_3D_VERSION }} "$new_filename" --clobber --repo ${{ github.repository }}
           done
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
