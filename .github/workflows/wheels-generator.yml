@@ -151,7 +151,7 @@ jobs:
   #     shell: pwsh
 
   build_linux:
-    needs: build-tag
+    # needs: build-tag
     # name: Build on linux systems
     runs-on: ${{ matrix.os }}
     container:
