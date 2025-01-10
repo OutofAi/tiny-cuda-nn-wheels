@@ -1,6 +1,5 @@
 <a href="https://www.buymeacoffee.com/outofai" target="_blank"><img src="https://img.shields.io/badge/-buy_me_a%C2%A0coffee-red?logo=buy-me-a-coffee" alt="Buy Me A Coffee"></a>
-[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/cloudposse.svg?style=social&label=Ashleigh%20Watson)](https://twitter.com/OutofAi) 
-[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/cloudposse.svg?style=social&label=Alex%20Nasa)](https://twitter.com/banterless_ai)
+[![Twitter](https://img.shields.io/twitter/url/https/twitter.com/cloudposse.svg?style=social&label=Out%20of%20AI)](https://twitter.com/OutofAi)
 
 
 This repository facilitates the creation of Python wheel files (.whl) from the [tiny-cuda-nn project](https://github.com/NVlabs/tiny-cuda-nn) to streamline the installation process on Google Colab and Kaggle. This is to circumvent the 20 minutes build requirement for tiny-cuda-nn on Google colab and Kaggle, when done from the source, to reduce it to few seconds!
