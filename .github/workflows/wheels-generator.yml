@@ -207,6 +207,11 @@ jobs:
           add-apt-repository ppa:deadsnakes/ppa -y
           apt-get update
           apt-get install -y python3.11 python3.11-distutils python3.11-venv
+          
+      - name: Install Python 3.11 development headers
+        run: |
+          apt-get update
+          apt-get install -y python3.11-dev
 
       - name: Install GitHub CLI
         run: |
