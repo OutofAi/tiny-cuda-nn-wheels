@@ -14,15 +14,15 @@ It also uses a release postfix for cuda and torch .post{arch-type}{cuda-version}
 
 For T4 GPU
 ```
-!curl -L "https://github.com/OutofAi/tiny-cuda-nn-wheels/releases/download/1.7.2/tinycudann-1.7.post75240121-cp310-cp310-linux_x86_64.whl" -o tinycudann-1.7.post75240121-cp310-cp310-linux_x86_64.whl
-!pip install tinycudann-1.7.post75240121-cp310-cp310-linux_x86_64.whl --force-reinstall
+!curl -L "https://github.com/OutofAi/tiny-cuda-nn-wheels/releases/download/1.7.3/tinycudann-1.7.post75251124-cp310-cp310-linux_x86_64.whl" -o tinycudann-1.7.post75251124-cp310-cp310-linux_x86_64.whl
+!pip install tinycudann-1.7.post75251124-cp310-cp310-linux_x86_64.whl --force-reinstall
 import tinycudann as tcnn
 ```
 
 For A100 GPU and L4 GPU
 ```
-!curl -L "https://github.com/OutofAi/tiny-cuda-nn-wheels/releases/download/1.7.2/tinycudann-1.7.post89240121-cp310-cp310-linux_x86_64.whl" -o tinycudann-1.7.post89240121-cp310-cp310-linux_x86_64.whl
-!pip install tinycudann-1.7.post89240121-cp310-cp310-linux_x86_64.whl --force-reinstall
+!curl -L "https://github.com/OutofAi/tiny-cuda-nn-wheels/releases/download/1.7.3/tinycudann-1.7.post89251124-cp310-cp310-linux_x86_64.whl" -o tinycudann-1.7.post89251124-cp310-cp310-linux_x86_64.whl
+!pip install tinycudann-1.7.post89251124-cp310-cp310-linux_x86_64.whl --force-reinstall
 import tinycudann as tcnn
 ```
 
