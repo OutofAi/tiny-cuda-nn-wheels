@@ -224,14 +224,14 @@ jobs:
           ls -R
       - name: Install Wheel  
         run:
-          pip install setuptools wheel
+          pip3.11 install setuptools wheel
       - name: Install Pytorch
         run: |
-          pip3 install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu${{ matrix.cudaversion }}
+          pip3.11 install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu${{ matrix.cudaversion }}
       - name: Generate Wheels
         run: |
           cd bindings/torch
-          python3 setup.py bdist_wheel --plat-name linux_x86_64
+          python3.11 setup.py bdist_wheel --plat-name linux_x86_64
         env:
           INCLUDE_ARCH: ${{ matrix.arch }} 
       - name: Upload assets
