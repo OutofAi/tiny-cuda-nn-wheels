@@ -224,10 +224,10 @@ jobs:
           ls -R
       - name: Install Wheel  
         run:
-          pip3.11 install setuptools wheel
+          python3.11 -m pip install setuptools wheel
       - name: Install Pytorch
         run: |
-          pip3.11 install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu${{ matrix.cudaversion }}
+          python3.11 -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu${{ matrix.cudaversion }}
       - name: Generate Wheels
         run: |
           cd bindings/torch
