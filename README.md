@@ -38,4 +38,5 @@ import tinycudann as tcnn
 For P100 GPU
 ```
 !pip install tinycudann@https://github.com/OutofAi/tiny-cuda-nn-wheels/releases/download/1.7.3/tinycudann-1.7.post60260124-cp311-cp311-linux_x86_64.whl
+import tinycudann as tcnn
 ```
