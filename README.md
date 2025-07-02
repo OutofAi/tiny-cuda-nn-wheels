@@ -37,7 +37,5 @@ import tinycudann as tcnn
 
 For P100 GPU
 ```
-!curl -L "https://github.com/OutofAi/tiny-cuda-nn-wheels/releases/download/Kaggle-P100/tinycudann-1.7-cp310-cp310-linux_x86_64.whl" -o tinycudann-1.7-cp310-cp310-linux_x86_64.whl
-!python -m pip install tinycudann-1.7-cp310-cp310-linux_x86_64.whl --force-reinstall --no-cache-dir
-import tinycudann as tcnn
+!pip install tinycudann@https://github.com/OutofAi/tiny-cuda-nn-wheels/releases/download/1.7.3/tinycudann-1.7.post60260124-cp311-cp311-linux_x86_64.whl
 ```
