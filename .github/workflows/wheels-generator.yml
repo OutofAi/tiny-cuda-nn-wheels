@@ -162,32 +162,32 @@ jobs:
           - os: ubuntu-22.04
             cuda: nvidia/cuda:12.4.0-devel-ubuntu22.04
             cudaversion: 124
-            torchversion: 251
+            torchversion: 260
             arch: 75
           - os: ubuntu-22.04
             cuda: nvidia/cuda:12.4.0-devel-ubuntu22.04
             cudaversion: 124
-            torchversion: 251
+            torchversion: 260
             arch: 80
           - os: ubuntu-22.04
             cuda: nvidia/cuda:12.4.0-devel-ubuntu22.04
             cudaversion: 124
-            torchversion: 251
+            torchversion: 260
             arch: 86
           - os: ubuntu-22.04
             cuda: nvidia/cuda:12.4.0-devel-ubuntu22.04
             cudaversion: 124
-            torchversion: 251
+            torchversion: 260
             arch: 87
           - os: ubuntu-22.04
             cuda: nvidia/cuda:12.4.0-devel-ubuntu22.04
             cudaversion: 124
-            torchversion: 251
+            torchversion: 260
             arch: 89
           - os: ubuntu-22.04
             cuda: nvidia/cuda:12.4.0-devel-ubuntu22.04
             cudaversion: 124
-            torchversion: 251
+            torchversion: 260
             arch: 90
     env:
       build_dir: "build"
@@ -232,7 +232,7 @@ jobs:
           python3.11 -m pip install setuptools wheel
       - name: Install Pytorch
         run: |
-          python3.11 -m pip install torch==2.5.1 --index-url https://download.pytorch.org/whl/cu${{ matrix.cudaversion }}
+          python3.11 -m pip install torch==2.6.0 --index-url https://download.pytorch.org/whl/cu${{ matrix.cudaversion }}
       - name: Generate Wheels
         run: |
           cd bindings/torch
