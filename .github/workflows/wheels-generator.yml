@@ -163,32 +163,32 @@ jobs:
             cuda: nvidia/cuda:12.4.0-devel-ubuntu22.04
             cudaversion: 124
             torchversion: 260
-            arch: 75
-          - os: ubuntu-22.04
-            cuda: nvidia/cuda:12.4.0-devel-ubuntu22.04
-            cudaversion: 124
-            torchversion: 260
-            arch: 80
-          - os: ubuntu-22.04
-            cuda: nvidia/cuda:12.4.0-devel-ubuntu22.04
-            cudaversion: 124
-            torchversion: 260
-            arch: 86
-          - os: ubuntu-22.04
-            cuda: nvidia/cuda:12.4.0-devel-ubuntu22.04
-            cudaversion: 124
-            torchversion: 260
-            arch: 87
-          - os: ubuntu-22.04
-            cuda: nvidia/cuda:12.4.0-devel-ubuntu22.04
-            cudaversion: 124
-            torchversion: 260
-            arch: 89
-          - os: ubuntu-22.04
-            cuda: nvidia/cuda:12.4.0-devel-ubuntu22.04
-            cudaversion: 124
-            torchversion: 260
-            arch: 90
+            arch: 60
+          # - os: ubuntu-22.04
+          #   cuda: nvidia/cuda:12.4.0-devel-ubuntu22.04
+          #   cudaversion: 124
+          #   torchversion: 260
+          #   arch: 80
+          # - os: ubuntu-22.04
+          #   cuda: nvidia/cuda:12.4.0-devel-ubuntu22.04
+          #   cudaversion: 124
+          #   torchversion: 260
+          #   arch: 86
+          # - os: ubuntu-22.04
+          #   cuda: nvidia/cuda:12.4.0-devel-ubuntu22.04
+          #   cudaversion: 124
+          #   torchversion: 260
+          #   arch: 87
+          # - os: ubuntu-22.04
+          #   cuda: nvidia/cuda:12.4.0-devel-ubuntu22.04
+          #   cudaversion: 124
+          #   torchversion: 260
+          #   arch: 89
+          # - os: ubuntu-22.04
+          #   cuda: nvidia/cuda:12.4.0-devel-ubuntu22.04
+          #   cudaversion: 124
+          #   torchversion: 260
+          #   arch: 90
     env:
       build_dir: "build"
       config: "Release"
