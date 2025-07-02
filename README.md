@@ -30,8 +30,7 @@ import tinycudann as tcnn
 
 For T4 GPU
 ```
-!curl -L "https://github.com/OutofAi/tiny-cuda-nn-wheels/releases/download/Kaggle-T4/tinycudann-1.7-cp310-cp310-linux_x86_64.whl" -o tinycudann-1.7-cp310-cp310-linux_x86_64.whl
-!python -m pip install tinycudann-1.7-cp310-cp310-linux_x86_64.whl --force-reinstall --no-cache-dir
+!pip install tinycudann@https://github.com/OutofAi/tiny-cuda-nn-wheels/releases/download/1.7.3/tinycudann-1.7.post75260124-cp311-cp311-linux_x86_64.whl
 import tinycudann as tcnn
 ```
 
